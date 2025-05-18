@@ -1,3 +1,5 @@
 Exercício: 
 ## Imagem 
-<img src="https://cdn3.gnarususercontent.com.br/2555-flutter/01/FCEF1.PNG" alt="Texto Alternativo">
+![image](https://github.com/user-attachments/assets/0e963054-2200-4aa4-b0e2-8e5bc4fd4ecd)
+
+
