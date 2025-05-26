@@ -1,7 +1,23 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(ContatosApp());
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: ContatosApp(),
+    );
+  }
 }
 
 class Contato {
@@ -13,40 +29,37 @@ class Contato {
 }
 
 class ContatosApp extends StatefulWidget {
+  const ContatosApp({super.key});
+
   @override
-  _ContatosAppState createState() => _ContatosAppState();
+  State<ContatosApp> createState() => _ContatosAppState();
 }
 
 class _ContatosAppState extends State<ContatosApp> {
   List<Contato> contatos = [
-    Contato(nome: 'John Doe', email: 'john_doeoe@gmail.com'),
-    Contato(nome: 'Alice O. Austin', email: 'AliceOAustin@rhyta.com'),
-    Contato(nome: 'Douglas R. Broadway', email: 'DouglasRBroadway@dayrep.com'),
-    Contato(nome: 'Miguel Owens', email: 'miguel.owens@example.com'),
-    Contato(nome: 'Lilou Dumont', email: 'lilou.dumont@example.com'),
+    Contato(nome: 'Gui', email: 'gui@gmail.com'),
+    Contato(nome: 'Marcos', email: 'marcos@gmail.com'),
+    Contato(nome: 'Vini', email: 'vini@gmail.com'),
+    Contato(nome: 'Arthur', email: 'arthur@gmail.com'),
+    Contato(nome: 'Rafa', email: 'rafa@gmail.com')
   ];
 
   int get favoritosCount => contatos.where((c) => c.favorito).length;
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Contatos Favoritos',
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Contatos Favoritos ($favoritosCount)'),
-        ),
-        body: ListView.builder(
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Contatos favoritos $favoritosCount'),
+      ),
+      body: ListView.builder(
           itemCount: contatos.length,
           itemBuilder: (context, index) {
             final contato = contatos[index];
             return ListTile(
               leading: CircleAvatar(
                 backgroundColor: Colors.blue,
-                child: Text(
-                  contato.nome[0],
-                  style: TextStyle(color: Colors.white),
-                ),
+                child: Text(contato.nome[0]),
               ),
               title: Text(contato.nome),
               subtitle: Text(contato.email),
@@ -62,9 +75,7 @@ class _ContatosAppState extends State<ContatosApp> {
                 },
               ),
             );
-          },
-        ),
-      ),
+          }),
     );
   }
 }
